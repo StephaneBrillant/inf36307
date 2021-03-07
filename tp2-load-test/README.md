@@ -1,4 +1,23 @@
-## Deployer locust loadtest dans kubernetes
+# Travail Pratique 2
+## Gestion de grande charge
+
+### Context
+Ce dossier comprends des fichiers de configuration kubernetes qui vous permetterons de:
+* Lancer un server de Base de Données `MySQL`
+* Lancer un webservice REST utilisant la Base de Données `MySQL`
+* Lancer un simulateur de charge `locust`
+
+Le simulateur de charge est préconfiguré pour générer du traffic sur le weservice REST.
+
+### Objectifs
+* Obtenir le plus grands nombre possible de Requête Par Secondes (RPS)
+* Documenter toutes vos experimentations et leurs résultats par écrit
+
+### Limitation
+Il est interdit de modifier les images utilisées pour le webservice, la base de données ou le générateur de charge.
+Vous pouvez toutefois charnger tous les fichiers de configuration kubernetes à votre guise.
+
+## Deployer locust loadtest dans kubernetes avec les serveur
 kubectl apply -f loadtest/.  
 kubectl apply -f server/.  
 
