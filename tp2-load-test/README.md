@@ -40,3 +40,20 @@ kubectl -n kube-system rollout status deployment metrics-server
 ## Comment démarrer minikube avec plus de ressource
 minikube delete
 minikube start --cpus 8 --memory 8096
+
+## Comment utiliser gatling au lieu de locust?
+Gatling n'a pas de webUi durant l'execution des tests, mais produit un rapport à la fin d'une simulation.
+Les résultats seront disponibles dans le dossier loadtest-gatling/results en format html
+
+### Comment lancer une simulation gatling?
+Obtenir le port pour accèder a votre webservice via :
+minikube service werservice
+
+Configurer votre simulation en modifiant le fichier /loadtest-gatling/user-files/simulations/webservice.scala
+Ligne 11 - Remplacer le port par le port de votre service
+Ligne 20 à 27 - Modifier à votre guise les paramètres de la simulation. Des exemples sont fournis en commentaires
+
+Lancer la simulation
+docker run -it --rm  --network host -v "$(pwd)/loadtest-gatling/conf:/opt/gatling/conf" -v "$(pwd)/loadtest-gatling/user-files:/opt/gatling/user-files" -v "$(pwd)/loadtest-gatling/results:/opt/gatling/results" denvazh/gatling:2.3.0 -s webservice
+
+À la fin de la simulation, consultez les résultats
