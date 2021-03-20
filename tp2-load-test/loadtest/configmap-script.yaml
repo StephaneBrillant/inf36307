@@ -4,10 +4,8 @@ metadata:
   name: scripts-cm
 data:
   locustfile.py: |
-    from locust import HttpLocust, TaskSet, task
-    class UserTasks(TaskSet):
+    from locust import HttpUser, task
+    class WebUser(HttpUser):
         @task
-        def stats(self):
+        def etudiants(self):
             self.client.get("/etudiants")
-    class WebsiteUser(HttpLocust):
-        task_set = UserTasks

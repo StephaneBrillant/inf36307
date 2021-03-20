@@ -22,21 +22,23 @@ spec:
         role: locust-slave
     spec:
       containers:
-      - image: grubykarol/locust:0.8.1-py3.6
+      - image: locustio/locust:1.4.3
         imagePullPolicy: IfNotPresent
         name: locust-slave
         env:
-          - name: ATTACKED_HOST
+          - name: LOCUST_HOST
             valueFrom:
               configMapKeyRef:
                 name: locust-cm
                 key: ATTACKED_HOST
           - name: LOCUST_MODE
-            value: SLAVE
+            value: SLAVE          
+          - name: LOCUST_LOCUSTFILE
+            value: /mnt/locust/locustfile.py
           - name: LOCUST_MASTER
             value: locust-master
         volumeMounts:
-          - mountPath: /locust
+          - mountPath: /mnt/locust
             name: locust-scripts
         resources: {}
         terminationMessagePath: /dev/termination-log

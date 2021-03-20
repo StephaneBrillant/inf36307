@@ -22,21 +22,23 @@ spec:
         role: locust-master
     spec:
       containers:
-      - image: grubykarol/locust:0.8.1-py3.6
+      - image: locustio/locust:1.4.3
         imagePullPolicy: IfNotPresent
         name: locust-master
         env:
-          - name: ATTACKED_HOST
+          - name: LOCUST_HOST
             valueFrom:
               configMapKeyRef:
                 name: locust-cm
                 key: ATTACKED_HOST
           - name: LOCUST_MODE
             value: MASTER
+          - name: LOCUST_LOCUSTFILE
+            value: /mnt/locust/locustfile.py
           - name: LOCUST_OPTS
-            value: --print-stats
+            value: --print-stats  
         volumeMounts:
-          - mountPath: /locust
+          - mountPath: /mnt/locust
             name: locust-scripts
         ports:
         - containerPort: 5557
