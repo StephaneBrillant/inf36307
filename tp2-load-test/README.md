@@ -15,9 +15,9 @@ Le simulateur de charge est préconfiguré pour générer du traffic sur le wese
 
 ### Limitation
 Il est interdit de modifier les images utilisées pour le webservice, la base de données ou le générateur de charge.
-Vous pouvez toutefois charnger tous les fichiers de configuration kubernetes à votre guise.
+Vous pouvez toutefois changer tous les fichiers de configuration kubernetes à votre guise.
 
-## Deployer locust loadtest dans kubernetes avec les serveur
+## Deployer locust loadtest dans kubernetes avec les serveurs
 kubectl apply -f loadtest/.  
 kubectl apply -f server/.  
 

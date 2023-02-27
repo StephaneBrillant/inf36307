@@ -22,7 +22,7 @@ spec:
         role: locust-master
     spec:
       containers:
-      - image: locustio/locust:1.4.3
+      - image: locustio/locust:2.14.2
         imagePullPolicy: IfNotPresent
         name: locust-master
         env:
