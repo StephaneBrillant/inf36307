@@ -22,9 +22,10 @@ spec:
         role: locust-slave
     spec:
       containers:
-      - image: locustio/locust:2.14.2
+      - image: locustio/locust:2.23.1
         imagePullPolicy: IfNotPresent
         name: locust-slave
+        args: ["--worker", "--master-host=locust-master"]
         env:
           - name: LOCUST_HOST
             valueFrom:
