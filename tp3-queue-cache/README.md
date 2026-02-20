@@ -14,10 +14,10 @@ Ce dossier comprends des fichiers de configuration kubernetes qui vous permetter
 *** Obtenir son adresse couriel depuis son nom
 *** Ajouter le champ `email` à l'object json reçu
 *** publier le nouvel objet dans le topic kafka `notification`
-* Obtenir le plus court temps de traitement possible pour l'ensemble du fluxpowe
+* Obtenir le plus court temps de traitement possible pour l'ensemble du flux
 * Documenter toutes vos experimentations et leurs résultats par écrit
 
-Les courriels des usasgers sont stocké dans la base de donné
+Les courriels des usagers sont stockés dans la base de donné
 
 ### Limitation
 Il est interdit de modifier les images utilisées pour le notification-consumer.
@@ -30,7 +30,7 @@ kubectl delete -f server/.
 ## Command lancer le flux de donner?
 kubectl replace --force -f user-producer.yaml 
 
-Rgarder les logs du pod `notification-consumer-deployment` pour voir votre résultat:
+Regarder les logs du pod `notification-consumer-deployment` pour voir votre résultat:
 ```
 kubectl logs --follow notification-consumer-deployment-75bdfd596f-glqkd
 Starting notification consumer

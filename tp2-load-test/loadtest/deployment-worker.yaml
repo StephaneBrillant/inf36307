@@ -4,13 +4,13 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    role: locust-slave
-  name: locust-slave
+    role: locust-worker
+  name: locust-worker
 spec:
   replicas: 2
   selector:
     matchLabels:
-      role: locust-slave
+      role: locust-worker
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -19,12 +19,12 @@ spec:
   template:
     metadata:
       labels:
-        role: locust-slave
+        role: locust-worker
     spec:
       containers:
-      - image: locustio/locust:2.23.1
+      - image: locustio/locust:2.43.3
         imagePullPolicy: IfNotPresent
-        name: locust-slave
+        name: locust-worker
         args: ["--worker", "--master-host=locust-master"]
         env:
           - name: LOCUST_HOST
@@ -33,7 +33,7 @@ spec:
                 name: locust-cm
                 key: ATTACKED_HOST
           - name: LOCUST_MODE
-            value: SLAVE          
+            value: WORKER
           - name: LOCUST_LOCUSTFILE
             value: /mnt/locust/locustfile.py
           - name: LOCUST_MASTER
